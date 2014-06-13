@@ -38,9 +38,6 @@ class SchedulerTest(unittest.TestCase):
             self.assertEquals(list(scheduler._active_workers.keys()), ['Worker2'])
 
     def test_load_broken_state(self):
-        tasks = {}
-        active_workers = {'Worker1': 1e9, 'Worker2': time.time()}
-
         with tempfile.NamedTemporaryFile(delete=True) as fn:
             with open(fn.name, 'w') as fobj:
                 print >> fobj, "b0rk"
